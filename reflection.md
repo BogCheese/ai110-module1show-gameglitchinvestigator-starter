@@ -56,6 +56,7 @@ Answer: Yes. The AI wrote the pytest cases and explained why the starter tests f
 ## 4. What did you learn about Streamlit and state?
 
 - How would you explain Streamlit "reruns" and session state to a friend who has never used Streamlit?
+Answer: Streamlit reruns the whole script from top to bottom every time you click a button or type something, so normal variables get wiped each time. Session state is like the game's memory that survives those reruns, which is how the secret number, score and attempts are kept, and why the New Game bug happened when I forgot to reset `status` in it.
 
 ---
 
@@ -63,5 +64,8 @@ Answer: Yes. The AI wrote the pytest cases and explained why the starter tests f
 
 - What is one habit or strategy from this project that you want to reuse in future labs or projects?
   - This could be a testing habit, a prompting strategy, or a way you used Git.
+Answer: I want to reuse the write, test, push process, where I fix one thing, run pytest to confirm it, then commit and push. I also liked talking to the AI about a good layout first and then going through each bug one by one.
 - What is one thing you would do differently next time you work with AI on a coding task?
+Answer: Next time I would use Claude's planning feature more and look through the code more thoroughly, asking the AI how it works before accepting changes.
 - In one or two sentences, describe how this project changed the way you think about AI generated code.
+Answer: This project showed me AI generated code is an insanely useful tool that suggests and makes great adjustments, but it is not always right. It gets about 80% of the way there, and then I still need to test it and look it over myself.
