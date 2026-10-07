@@ -1,3 +1,5 @@
+import math
+
 import pytest
 from streamlit.testing.v1 import AppTest
 
@@ -178,3 +180,14 @@ def test_app_rejected_guess_does_not_use_attempt():
         assert at.error  # an error message is shown
         assert at.session_state.attempts == 0
         assert at.session_state.history == []
+
+
+@pytest.mark.parametrize("difficulty", DIFFICULTIES)
+def test_every_difficulty_is_winnable(difficulty):
+    # Halving the range each guess needs ceil(log2(size)) guesses; the limit must allow that.
+    at = _app()
+    at.sidebar.selectbox[0].select(difficulty).run()
+    caption = next(c.value for c in at.sidebar.caption if "Attempts allowed" in c.value)
+    limit = int(caption.split(":")[1])
+    low, high = get_range_for_difficulty(difficulty)
+    assert limit >= math.ceil(math.log2(high - low + 1))
